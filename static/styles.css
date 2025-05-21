@@ -1,0 +1,28 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.btn {
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: bold;
+}
+
+.alert {
+    border-radius: 10px;
+    margin-top: 20px;
+}
