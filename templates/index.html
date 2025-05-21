@@ -3,41 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de NIT Colombiano</title>
+    <title>Calculadora NIT Espacial</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="card shadow">
-            <div class="card-header bg-primary text-white">
-                <h1 class="text-center">Calculadora de Dígito de Verificación NIT</h1>
+    <div id="particles-js"></div>
+    
+    <div class="container mt-5 position-relative">
+        <div class="card shadow cosmic-card animate__animated animate__fadeIn">
+            <div class="card-header cosmic-header">
+                <h1 class="text-center text-white animate__animated animate__pulse animate__infinite">Calculadora Cósmica de NIT</h1>
             </div>
-            <div class="card-body">
+            <div class="card-body cosmic-body">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
-                        <form id="nitForm" class="mb-4">
-                            <div class="mb-3">
-                                <label for="nit" class="form-label">Número de NIT:</label>
-                                <input type="text" class="form-control" id="nit" required 
-                                       placeholder="Ingrese el NIT sin dígito de verificación">
+                        <div class="space-ship mb-4 animate__animated animate__slideInDown">
+                            <img src="{{ url_for('static', path='/images/spaceship.png') }}" alt="Nave espacial" class="img-fluid d-none d-md-block mx-auto" style="max-height: 120px;">
+                        </div>
+                        
+                        <form id="nitForm" class="mb-4 animate__animated animate__fadeInUp">
+                            <div class="mb-3 cosmic-input-group">
+                                <label for="nit" class="form-label cosmic-label">Número de NIT Cósmico:</label>
+                                <input type="text" class="form-control cosmic-input" id="nit" required 
+                                       placeholder="Ingresa el código estelar (NIT)">
+                                <div class="cosmic-input-glow"></div>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Calcular</button>
+                            <button type="submit" class="btn cosmic-button w-100">
+                                <span class="cosmic-button-text">Calcular</span>
+                                <span class="cosmic-button-stars"></span>
+                            </button>
                         </form>
-                        <div id="resultado" class="alert alert-success d-none">
-                            <h4 class="text-center">Resultado:</h4>
-                            <p class="text-center mb-0">NIT: <span id="nitResultado"></span></p>
-                            <p class="text-center mb-0">Dígito de Verificación: <span id="dvResultado"></span></p>
+                        
+                        <div id="resultado" class="cosmic-result d-none animate__animated animate__zoomIn">
+                            <div class="cosmic-result-content">
+                                <h4 class="text-center cosmic-result-title">Resultado Estelar:</h4>
+                                <div class="cosmic-data">
+                                    <p class="text-center mb-0">NIT: <span id="nitResultado" class="cosmic-value"></span></p>
+                                    <p class="text-center mb-0">Dígito de Verificación: <span id="dvResultado" class="cosmic-value"></span></p>
+                                </div>
+                                <div class="planet-animation">
+                                    <div class="planet"></div>
+                                    <div class="orbit">
+                                        <div class="satellite"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="card-footer cosmic-footer text-center text-white">
+                <p>Explorando el universo de los NITs colombianos</p>
             </div>
         </div>
     </div>
 
     <script>
+        // Configuración de partículas
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 100, density: { enable: true, value_area: 800 } },
+                    color: { value: "#ffffff" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: false },
+                    move: {
+                        enable: true,
+                        speed: 0.5,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out"
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" }
+                    }
+                }
+            });
+        });
+
+        // Lógica del formulario
         document.getElementById('nitForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+            
+            // Animación de carga
+            const button = document.querySelector('.cosmic-button');
+            button.classList.add('loading');
+            button.querySelector('.cosmic-button-text').textContent = 'Calculando...';
+            
             const nit = document.getElementById('nit').value;
             try {
                 const response = await fetch('/calcular-dv', {
@@ -47,12 +109,35 @@
                     },
                     body: JSON.stringify({ numero: nit })
                 });
+                
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+                
                 const data = await response.json();
+                
+                // Mostrar resultado con animación
                 document.getElementById('nitResultado').textContent = data.nit;
                 document.getElementById('dvResultado').textContent = data.digito_verificacion;
-                document.getElementById('resultado').classList.remove('d-none');
+                
+                const resultado = document.getElementById('resultado');
+                resultado.classList.remove('d-none');
+                
+                // Efecto de desplazamiento suave
+                resultado.scrollIntoView({ behavior: 'smooth' });
+                
+                // Sonido espacial (opcional)
+                const audio = new Audio("{{ url_for('static', path='/sounds/success.mp3') }}");
+                audio.volume = 0.3;
+                audio.play().catch(e => console.log('Reproducción de audio bloqueada'));
+                
             } catch (error) {
+                console.error('Error:', error);
                 alert('Error al calcular el dígito de verificación');
+            } finally {
+                // Restaurar botón
+                button.classList.remove('loading');
+                button.querySelector('.cosmic-button-text').textContent = 'Calcular';
             }
         });
     </script>

@@ -1,28 +1,304 @@
+/* Estilos cósmicos para la calculadora de NIT */
 body {
-    background-color: #f8f9fa;
+    background-color: #0a0a2a;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
 }
 
-.card {
-    border-radius: 15px;
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.cosmic-card {
+    background: rgba(13, 12, 34, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(123, 104, 238, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(123, 104, 238, 0.3), 
+                inset 0 0 15px rgba(123, 104, 238, 0.2);
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.cosmic-card:hover {
+    box-shadow: 0 0 40px rgba(123, 104, 238, 0.5), 
+                inset 0 0 20px rgba(123, 104, 238, 0.3);
+    transform: translateY(-5px);
+}
+
+.cosmic-header {
+    background: linear-gradient(135deg, #4b0082, #9400d3);
+    border-bottom: 1px solid rgba(123, 104, 238, 0.4);
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cosmic-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 80%);
+    animation: cosmic-pulse 15s infinite linear;
+    z-index: 0;
+}
+
+.cosmic-body {
+    background: linear-gradient(to bottom, rgba(25, 25, 65, 0.7), rgba(10, 10, 30, 0.7));
+    padding: 30px;
+}
+
+.cosmic-footer {
+    background: linear-gradient(135deg, #4b0082, #9400d3);
+    border-top: 1px solid rgba(123, 104, 238, 0.4);
+    padding: 15px;
+    font-size: 0.9rem;
+}
+
+.cosmic-input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.cosmic-label {
+    color: #a29aff;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px rgba(123, 104, 238, 0.5);
+}
+
+.cosmic-input {
+    background: rgba(20, 20, 50, 0.6);
+    border: 1px solid rgba(123, 104, 238, 0.4);
+    border-radius: 10px;
+    color: #fff;
+    padding: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(123, 104, 238, 0.1);
+}
+
+.cosmic-input:focus {
+    background: rgba(30, 30, 70, 0.7);
+    border-color: rgba(123, 104, 238, 0.8);
+    box-shadow: 0 0 15px rgba(123, 104, 238, 0.3);
+    outline: none;
+}
+
+.cosmic-input-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 0 20px rgba(123, 104, 238, 0.5);
+}
+
+.cosmic-input:focus + .cosmic-input-glow {
+    opacity: 1;
+}
+
+.cosmic-button {
+    background: linear-gradient(135deg, #4b0082, #9400d3);
     border: none;
-}
-
-.card-header {
-    border-radius: 15px 15px 0 0 !important;
-}
-
-.form-control {
     border-radius: 10px;
-    padding: 12px;
-}
-
-.btn {
-    border-radius: 10px;
-    padding: 12px;
+    color: white;
     font-weight: bold;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(123, 104, 238, 0.3);
+    z-index: 1;
 }
 
-.alert {
+.cosmic-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+.cosmic-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(123, 104, 238, 0.5);
+}
+
+.cosmic-button:hover::before {
+    left: 100%;
+    animation: cosmic-shine 1.5s infinite;
+}
+
+.cosmic-button.loading {
+    background: linear-gradient(135deg, #333399, #6633cc);
+}
+
+.cosmic-button-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.cosmic-button-stars::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white, rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+}
+
+.cosmic-result {
+    background: rgba(20, 20, 50, 0.7);
+    border: 1px solid rgba(123, 104, 238, 0.4);
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(123, 104, 238, 0.3);
+}
+
+.cosmic-result::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(123, 104, 238, 0.1) 0%, transparent 70%);
+    animation: cosmic-pulse 10s infinite linear;
+    z-index: 0;
+}
+
+.cosmic-result-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cosmic-result-title {
+    color: #a29aff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(123, 104, 238, 0.7);
+}
+
+.cosmic-data {
+    background: rgba(30, 30, 70, 0.5);
     border-radius: 10px;
-    margin-top: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(123, 104, 238, 0.3);
+}
+
+.cosmic-value {
+    color: #f8f8ff;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(123, 104, 238, 0.7);
+    font-size: 1.2rem;
+}
+
+/* Animaciones cósmicas */
+@keyframes cosmic-pulse {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes cosmic-shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Animación del planeta */
+.planet-animation {
+    position: relative;
+    height: 100px;
+    width: 100%;
+    margin: 20px auto 0;
+}
+
+.planet {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 30% 30%, #9370DB, #4B0082);
+    border-radius: 50%;
+    left: calc(50% - 20px);
+    top: calc(50% - 20px);
+    box-shadow: 0 0 20px rgba(123, 104, 238, 0.7);
+}
+
+.orbit {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 1px dashed rgba(123, 104, 238, 0.5);
+    border-radius: 50%;
+    left: calc(50% - 40px);
+    top: calc(50% - 40px);
+    animation: orbit-rotation 8s linear infinite;
+}
+
+.satellite {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #a29aff;
+    border-radius: 50%;
+    top: -6px;
+    left: calc(50% - 6px);
+    box-shadow: 0 0 10px rgba(123, 104, 238, 0.9);
+}
+
+@keyframes orbit-rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cosmic-card {
+        margin: 10px;
+    }
+    
+    .cosmic-header h1 {
+        font-size: 1.5rem;
+    }
 }
