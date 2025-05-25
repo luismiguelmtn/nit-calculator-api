@@ -7,6 +7,58 @@ body {
     min-height: 100vh;
     margin: 0;
     position: relative;
+    transition: all 0.5s ease;
+}
+
+/* Modo claro */
+body.light-mode {
+    background-color: #e6e9f0;
+    color: #333;
+}
+
+body.light-mode .cosmic-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(123, 104, 238, 0.4);
+    box-shadow: 0 0 30px rgba(123, 104, 238, 0.3), 
+                inset 0 0 15px rgba(123, 104, 238, 0.2);
+}
+
+body.light-mode .cosmic-header,
+body.light-mode .cosmic-footer {
+    background: linear-gradient(135deg, #7b68ee, #9370db);
+}
+
+body.light-mode .cosmic-body {
+    background: linear-gradient(to bottom, rgba(240, 240, 255, 0.9), rgba(230, 230, 250, 0.9));
+}
+
+body.light-mode .cosmic-label {
+    color: #4b0082;
+    text-shadow: 0 0 5px rgba(123, 104, 238, 0.3);
+}
+
+body.light-mode .cosmic-input {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: 2px solid rgba(123, 104, 238, 0.5);
+}
+
+body.light-mode .cosmic-result {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(123, 104, 238, 0.4);
+}
+
+body.light-mode .cosmic-result-title {
+    color: #4b0082;
+}
+
+body.light-mode .cosmic-data {
+    background: rgba(240, 240, 255, 0.9);
+    color: #333;
+}
+
+body.light-mode .cosmic-value {
+    color: #4b0082;
 }
 
 #particles-js {
@@ -19,7 +71,7 @@ body {
 }
 
 .cosmic-card {
-    background: rgba(13, 12, 34, 0.7);
+    background: rgba(13, 12, 34, 0.85);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(123, 104, 238, 0.4);
     border-radius: 20px;
@@ -44,6 +96,13 @@ body {
     overflow: hidden;
 }
 
+.theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
 .cosmic-header::before {
     content: '';
     position: absolute;
@@ -57,7 +116,7 @@ body {
 }
 
 .cosmic-body {
-    background: linear-gradient(to bottom, rgba(25, 25, 65, 0.7), rgba(10, 10, 30, 0.7));
+    background: linear-gradient(to bottom, rgba(25, 25, 65, 0.8), rgba(10, 10, 30, 0.8));
     padding: 30px;
 }
 
@@ -82,7 +141,7 @@ body {
 }
 
 .cosmic-input {
-    background: rgba(20, 20, 50, 0.8);
+    background: rgba(30, 30, 70, 0.9);
     border: 2px solid rgba(123, 104, 238, 0.6);
     border-radius: 10px;
     color: #ffffff;
@@ -94,9 +153,9 @@ body {
 }
 
 .cosmic-input:focus {
-    background: rgba(30, 30, 70, 0.7);
+    background: rgba(40, 40, 90, 0.9);
     border-color: rgba(123, 104, 238, 0.8);
-    box-shadow: 0 0 15px rgba(123, 104, 238, 0.3);
+    box-shadow: 0 0 15px rgba(123, 104, 238, 0.5);
     outline: none;
 }
 
@@ -178,14 +237,14 @@ body {
 }
 
 .cosmic-result {
-    background: rgba(20, 20, 50, 0.7);
-    border: 1px solid rgba(123, 104, 238, 0.4);
+    background: rgba(30, 30, 70, 0.9);
+    border: 2px solid rgba(123, 104, 238, 0.6);
     border-radius: 15px;
     padding: 25px;
     margin-top: 30px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(123, 104, 238, 0.3);
+    box-shadow: 0 0 20px rgba(123, 104, 238, 0.5);
 }
 
 .cosmic-result::before {
@@ -214,11 +273,11 @@ body {
 }
 
 .cosmic-data {
-    background: rgba(30, 30, 70, 0.8);
+    background: rgba(40, 40, 90, 0.9);
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
-    border: 2px solid rgba(123, 104, 238, 0.5);
+    border: 2px solid rgba(123, 104, 238, 0.6);
     box-shadow: 0 0 15px rgba(123, 104, 238, 0.4);
 }
 
@@ -227,6 +286,20 @@ body {
     font-weight: bold;
     text-shadow: 0 0 8px rgba(123, 104, 238, 0.7), 0 0 15px rgba(255, 255, 255, 0.5);
     font-size: 1.3rem;
+}
+
+.cosmic-value-large {
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(123, 104, 238, 0.7), 0 0 15px rgba(255, 255, 255, 0.5);
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+.badge {
+    font-size: 1.2rem;
+    padding: 0.4em 0.6em;
+    border-radius: 8px;
 }
 
 /* Animaciones cósmicas */
@@ -306,5 +379,9 @@ body {
     
     .cosmic-header h1 {
         font-size: 1.5rem;
+    }
+    
+    .cosmic-value-large {
+        font-size: 1.4rem;
     }
 }
