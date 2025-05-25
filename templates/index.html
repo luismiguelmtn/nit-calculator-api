@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora NIT Espacial</title>
+    <title>Calculadora DV DIAN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
@@ -16,11 +16,15 @@
     <div class="container mt-5 position-relative">
         <div class="card shadow cosmic-card animate__animated animate__fadeIn">
             <div class="card-header cosmic-header">
+<<<<<<< HEAD
                 <h1 class="text-center text-white animate__animated animate__pulse animate__infinite">Calculadora Cósmica de NIT</h1>
                 <div class="theme-toggle">
                     <button id="lightModeBtn" class="btn btn-sm btn-light me-2"><i class="fas fa-sun"></i></button>
                     <button id="darkModeBtn" class="btn btn-sm btn-dark"><i class="fas fa-moon"></i></button>
                 </div>
+=======
+                <h1 class="text-center text-white animate__animated animate__pulse animate__infinite" style="text-shadow: 0 0 10px #fff, 0 0 20px #9370DB; font-weight: 700;">Calculadora de Digito de Verificación</h1>
+>>>>>>> d1bef047470b3a3adc809018d15a428f3fca9a7e
             </div>
             <div class="card-body cosmic-body">
                 <div class="row justify-content-center">
@@ -31,6 +35,7 @@
                         
                         <form id="nitForm" class="mb-4 animate__animated animate__fadeInUp">
                             <div class="mb-3 cosmic-input-group">
+<<<<<<< HEAD
                                 <label for="nit" class="form-label cosmic-label">Número de NIT Cósmico:</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control cosmic-input" id="nit" required 
@@ -40,6 +45,11 @@
                                     </button>
                                 </div>
                                 <div class="form-text text-light mt-2">Ingresa solo números, sin puntos ni guiones</div>
+=======
+                                <label for="nit" class="form-label cosmic-label" style="color: #ffffff; font-weight: 700; text-shadow: 0 0 10px #fff, 0 0 15px #9370DB;">Ingrese Número de NIT:</label>
+                                <input type="text" class="form-control cosmic-input" id="nit" required 
+                                       placeholder="Ingrese NIT" style="color: #ffffff; font-weight: 600; text-shadow: 0 0 5px #9370DB; background: rgba(30, 30, 70, 0.8); border: 2px solid rgba(123, 104, 238, 0.7);">
+>>>>>>> d1bef047470b3a3adc809018d15a428f3fca9a7e
                                 <div class="cosmic-input-glow"></div>
                             </div>
                             <button type="submit" class="btn cosmic-button w-100">
@@ -50,6 +60,7 @@
                         
                         <div id="resultado" class="cosmic-result d-none animate__animated animate__zoomIn">
                             <div class="cosmic-result-content">
+<<<<<<< HEAD
                                 <h4 class="text-center cosmic-result-title">Resultado Estelar:</h4>
                                 <div class="cosmic-data">
                                     <div class="row">
@@ -63,6 +74,12 @@
                                     <div class="text-center mt-3">
                                         <p>NIT Completo: <span id="nitCompleto" class="cosmic-value-large"></span></p>
                                     </div>
+=======
+                                <h4 class="text-center cosmic-result-title" style="color: #ffffff; font-weight: 700; text-shadow: 0 0 10px #fff, 0 0 15px #9370DB;">Resultado:</h4>
+                                <div class="cosmic-data" style="background: rgba(40, 40, 90, 0.9); border: 2px solid rgba(123, 104, 238, 0.7);">
+                                    <p class="text-center mb-0" style="color: #ffffff; font-weight: 600; text-shadow: 0 0 8px #fff;">NIT: <span id="nitResultado" class="cosmic-value" style="color: #ffffff; font-weight: 700; text-shadow: 0 0 10px #fff, 0 0 15px #9370DB;"></span></p>
+                                    <p class="text-center mb-0" style="color: #ffffff; font-weight: 600; text-shadow: 0 0 8px #fff;">Dígito de Verificación: <span id="dvResultado" class="cosmic-value" style="color: #ffffff; font-weight: 700; text-shadow: 0 0 10px #fff, 0 0 15px #9370DB;"></span></p>
+>>>>>>> d1bef047470b3a3adc809018d15a428f3fca9a7e
                                 </div>
                                 <div class="planet-animation">
                                     <div class="planet"></div>
@@ -84,7 +101,11 @@
                 </div>
             </div>
             <div class="card-footer cosmic-footer text-center text-white">
+<<<<<<< HEAD
                 <p>Explorando el universo de los NITs colombianos</p>
+=======
+                <p style="text-shadow: 0 0 8px #fff;">Si estas leyeno esto te amo vane y te extraño muchisimo mano</p>
+>>>>>>> d1bef047470b3a3adc809018d15a428f3fca9a7e
             </div>
         </div>
     </div>
