@@ -385,3 +385,118 @@ body.light-mode .cosmic-value {
         font-size: 1.4rem;
     }
 }
+
+/* Añadir al final del archivo CSS existente */
+
+/* Estilos para el historial */
+.cosmic-history {
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 15px;
+    background: rgba(30, 30, 70, 0.7);
+    border: 2px solid rgba(123, 104, 238, 0.5);
+    box-shadow: 0 0 20px rgba(123, 104, 238, 0.4);
+}
+
+.cosmic-history-title {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.cosmic-history-container {
+    border-radius: 10px;
+    background: rgba(20, 20, 50, 0.8);
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(123, 104, 238, 0.7) rgba(30, 30, 70, 0.5);
+}
+
+.cosmic-history-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cosmic-history-container::-webkit-scrollbar-track {
+    background: rgba(30, 30, 70, 0.5);
+    border-radius: 10px;
+}
+
+.cosmic-history-container::-webkit-scrollbar-thumb {
+    background-color: rgba(123, 104, 238, 0.7);
+    border-radius: 10px;
+}
+
+.cosmic-table {
+    color: #fff;
+    background: transparent !important;
+    margin-bottom: 0;
+}
+
+.cosmic-table thead th {
+    border-color: rgba(123, 104, 238, 0.5);
+    color: #a29aff;
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(123, 104, 238, 0.7);
+}
+
+.cosmic-table tbody td {
+    border-color: rgba(123, 104, 238, 0.3);
+    vertical-align: middle;
+}
+
+.cosmic-table tr:hover {
+    background-color: rgba(123, 104, 238, 0.2) !important;
+}
+
+.history-use-btn {
+    transition: all 0.3s ease;
+}
+
+.history-use-btn:hover {
+    transform: translateX(3px);
+    background-color: rgba(123, 104, 238, 0.5);
+    border-color: rgba(123, 104, 238, 0.8);
+}
+
+/* Estilos para el modo claro */
+body.light-mode .cosmic-history {
+    background: rgba(240, 240, 255, 0.8);
+    border: 2px solid rgba(123, 104, 238, 0.4);
+}
+
+body.light-mode .cosmic-history-title {
+    color: #4b0082;
+    text-shadow: 0 0 5px rgba(123, 104, 238, 0.3);
+}
+
+body.light-mode .cosmic-history-container {
+    background: rgba(230, 230, 250, 0.9);
+}
+
+body.light-mode .cosmic-table {
+    color: #333;
+}
+
+body.light-mode .cosmic-table thead th {
+    color: #4b0082;
+    border-color: rgba(123, 104, 238, 0.3);
+}
+
+body.light-mode .cosmic-table tbody td {
+    border-color: rgba(123, 104, 238, 0.2);
+}
+
+body.light-mode .cosmic-table tr:hover {
+    background-color: rgba(123, 104, 238, 0.1) !important;
+}
+
+body.light-mode .history-use-btn {
+    color: #4b0082;
+    border-color: #4b0082;
+}
+
+body.light-mode .history-use-btn:hover {
+    color: #fff;
+    background-color: #4b0082;
+}
